@@ -19,4 +19,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag suomiton/firehay-measurements-web:$(date +%s) -e API_ENDPOINT='$API_ENDPOINT'
+      run: docker build . --file Dockerfile --tag suomiton/firehay-measurements-web:$(date +%s) --build-arg API_ENDPOINT='$API_ENDPOINT' --build-arg API_SECRET='$API_SECRET'
