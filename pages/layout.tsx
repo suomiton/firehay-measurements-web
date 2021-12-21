@@ -1,8 +1,9 @@
 import Head from "next/head";
+import { PropsWithChildren } from "react";
 import Header from "../components/header";
 import styles from "../styles/Home.module.css";
 
-export default function Layout({ children }) {
+export default function Layout({ children }: PropsWithChildren<{}>) {
   return (
     <div className={styles.container}>
       <Head>
