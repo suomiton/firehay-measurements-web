@@ -44,13 +44,13 @@ function LinkItem({
   return (
     <Link href={`/location/${locationId}`}>
       <a
-        className={`grid grid-flow-row grid-cols-10 md:grid-cols-5 gap-8 bg-gradient-to-r md:bg-gradient-to-br from-white ${resolveBgGradient(
+        className={`flex flex-row md:flex-col content-center gap-8 bg-gradient-to-r md:bg-gradient-to-br from-white ${resolveBgGradient(
           parseInt(temperature.toString(), 10)
-        )} p-2 md:p-4 relative`}
+        )} p-2 px-4 md:p-4 relative`}
       >
-        <div className="col-span-4 sm:col-span-3 md:col-span-5 flex flex-col text-right self-center md:order-1">
+        <div className="flex-initial md:flex-auto md:min-w-full flex flex-col text-right self-center md:order-1">
           {isMobile ? (
-            <div className="flex flex-row">
+            <div className="flex flex-row gap-4">
               <div className="flex-initial self-center">
                 <TrendIndicator ratio={temperatureRatio} />
               </div>
@@ -74,7 +74,7 @@ function LinkItem({
             </div>
           )}
         </div>
-        <div className="col-span-6 sm:col-span-7 md:col-span-5 flex flex-col justify-start content-center">
+        <div className="flex-auto flex flex-col justify-start content-center">
           <div className="flex-auto">
             <span className="text-xl leading-none">{locationName}</span>
           </div>
