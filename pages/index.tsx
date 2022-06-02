@@ -27,13 +27,13 @@ function LinkItem({
 
     if (temperature >= 24) {
       color = "red";
-      magnitude = `${((temperature + 2 - 23) * 100)}`;
+      magnitude = `${(temperature + 2 - 23) * 100}`;
     } else if (temperature >= 20) {
       color = "orange";
-      magnitude = `${((temperature - 19) * 100)}`;
+      magnitude = `${(temperature - 19) * 100}`;
     } else if (temperature >= 15) {
       color = "blue";
-      magnitude = `${(Math.abs(temperature - 20)) * 100}`;
+      magnitude = `${Math.abs(temperature - 20) * 100}`;
     } else {
       color = "blue";
       magnitude = "500";
@@ -46,12 +46,17 @@ function LinkItem({
       <a
         className={`grid grid-flow-row grid-cols-10 md:grid-cols-5 gap-8 bg-gradient-to-r md:bg-gradient-to-br from-white ${resolveBgGradient(
           parseInt(temperature.toString(), 10)
-        )} p-2 md:p-4`}
+        )} p-2 md:p-4 relative`}
       >
-        <div className="col-span-4 sm:col-span-2 md:col-span-5 flex flex-col text-right self-center md:order-1">
+        <div className="col-span-4 sm:col-span-3 md:col-span-5 flex flex-col text-right self-center md:order-1">
           {isMobile ? (
-            <div className="font-bold text-4xl">
-              {Math.floor(temperature)} &deg;C
+            <div className="flex flex-row">
+              <div className="flex-initial self-center">
+                <TrendIndicator ratio={temperatureRatio} />
+              </div>
+              <div className="flex-auto self-center font-bold text-4xl">
+                {Math.floor(temperature)} &deg;C
+              </div>
             </div>
           ) : (
             <div className="flex flex-row">
@@ -69,9 +74,9 @@ function LinkItem({
             </div>
           )}
         </div>
-        <div className="col-span-6 sm:col-span-8 md:col-span-5 flex flex-col justify-start content-center">
+        <div className="col-span-6 sm:col-span-7 md:col-span-5 flex flex-col justify-start content-center">
           <div className="flex-auto">
-            <span className="text-xl">{locationName}</span>
+            <span className="text-xl leading-none">{locationName}</span>
           </div>
           {isMobile && (
             <div className="flex-auto text-xs font-light">
@@ -81,10 +86,15 @@ function LinkItem({
           )}
           <div className="flex-auto">
             <span className="text-xs font-light">
-              {DateDistance(timeStamp)} <TrendIndicator ratio={temperatureRatio} />
+              {DateDistance(timeStamp)}
             </span>
           </div>
         </div>
+        {!isMobile && (
+          <div className="absolute top-4 right-4">
+            <TrendIndicator ratio={temperatureRatio} />
+          </div>
+        )}
       </a>
     </Link>
   );

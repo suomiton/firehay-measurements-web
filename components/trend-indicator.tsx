@@ -5,6 +5,12 @@ interface TrendIndicatorProps {
 }
 
 function TrendIndicator({ ratio }: TrendIndicatorProps) {
+  const color =
+    ratio === 1
+      ? "text-gray-500"
+      : ratio > 1
+      ? "text-orange-500"
+      : "text-blue-500";
   ratio = ratio > 2 ? 2 : ratio;
   ratio = ratio < 0 ? 0 : ratio;
 
@@ -14,7 +20,7 @@ function TrendIndicator({ ratio }: TrendIndicatorProps) {
   const angle = fixedRatio * 90;
 
   return (
-    <div>
+    <div className={color}>
       <i
         className={styles.arrowUpO}
         style={{ transform: `rotate(${angle}deg)` }}
