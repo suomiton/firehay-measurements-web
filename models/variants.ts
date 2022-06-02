@@ -1,10 +1,6 @@
-import { Keyframes } from "framer-motion";
-import { TransformProperties } from "framer-motion/types/motion/types";
-import { Transition, TransitionDefinition, Variant } from "framer-motion/types/types";
-
 const delayedSlideIn = {
     visible: (idx: number) => ({
-        x: ["-100%", "15%", "0%"],
+        x: ["-150%", "15%", "0%"],
         transition: {
             delay: idx * 0.2
         }

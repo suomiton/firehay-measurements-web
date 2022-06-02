@@ -7,4 +7,9 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  safelist: [
+    {
+      pattern: /to-(red|orange|blue)-(100|200|300|400|500)/,
+    },
+  ]
 }

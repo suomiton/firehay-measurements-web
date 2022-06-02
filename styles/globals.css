@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-    @apply h-full bg-gradient-to-b from-white to-gray-200;
+@layer base {
+    body {
+        @apply bg-gray-100;
+    }
+
+    h1 {
+        @apply text-2xl font-light uppercase;
+    }
+
+    h2 {
+        @apply text-xl font-light;
+    }
+
+    label {
+        @apply text-xs font-light;
+    }
 }
+
+@layer components {}
