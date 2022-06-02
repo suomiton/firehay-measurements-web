@@ -1,14 +1,18 @@
 export interface FirehayStatusAM {
     readonly id: string;
     readonly locationId: string;
-    readonly location: string;
+    readonly locationName: string;
     readonly temperature: number;
     readonly temperature6Avg: number;
     readonly temperature24Avg: number;
     readonly temperatureRatio: number;
+    readonly temperatureUnit: string;
     readonly pressure: number;
+    readonly pressureUnit: string;
     readonly humidity: number;
+    readonly humidityUnit: string;
     readonly timeStamp: string;
+    readonly isExternal: boolean;
 };
 
 export interface FirehayLocationStatus extends FirehayStatusAM {
@@ -16,12 +20,11 @@ export interface FirehayLocationStatus extends FirehayStatusAM {
 }
 
 export interface MeasurementAM {
+    readonly timeStamp: string;
     readonly temperature: number;
-    readonly timeStamp: Date;
+    readonly temperatureExt: number;
     readonly humidity: number;
+    readonly humidityExt: number;
     readonly pressure: number;
-}
-
-export interface ClientExtendedStatus extends FirehayStatusAM {
-    readonly timeStampDistance: string;
+    readonly pressureExt: number;
 }
