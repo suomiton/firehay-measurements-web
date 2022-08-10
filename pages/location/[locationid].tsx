@@ -19,7 +19,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(params: Params) {
-  console.log("getStaticProps", { params });
   const status = await Api.get<FirehayLocationStatus>(
     `location/${params.params.locationid}`
   );
@@ -34,7 +33,6 @@ export async function getStaticProps(params: Params) {
 function Location({
   locationStatus,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log({ locationStatus });
   const {
     lastWeek,
     locationName,
@@ -48,6 +46,7 @@ function Location({
     pressureUnit,
     timeStamp,
   } = locationStatus;
+  
   const dateConverted = lastWeek.map((lw) => ({
     ...lw,
     timeStamp: new Date(lw.timeStamp),

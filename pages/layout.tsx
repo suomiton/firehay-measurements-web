@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { PropsWithChildren, useEffect, useState } from "react";
+import { PropsWithChildren } from "react";
 import Header from "../components/header";
 import styles from "../styles/Home.module.css";
 
